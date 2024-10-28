@@ -12,9 +12,10 @@
 [![GitHub release](https://img.shields.io/github/tag/pingcap/tidb.svg?label=release)](https://github.com/pingcap/tidb/releases)
 </div>
 
-# TiDB
+# TiDB (Google Translate)
 
 TiDB (/’taɪdiːbi:/, "Ti" stands for Titanium) is an open-source, cloud-native, distributed SQL database designed for high availability, horizontal and vertical scalability, strong consistency, and high performance.
+TiDB(/’taɪdiːbi:/, "Ti"는 Titanium의 약자)는 높은 가용성, 수평 및 수직 확장성, 강력한 일관성 및 고성능을 위해 설계된 오픈 소스, 클라우드 기반 분산 SQL 데이터베이스입니다.
 
 - [Key Features](#key-features)
 - [Quick Start](#quick-start)
@@ -28,18 +29,25 @@ TiDB (/’taɪdiːbi:/, "Ti" stands for Titanium) is an open-source, cloud-nativ
 ## Key Features
 
 - **[Distributed Transactions](https://www.pingcap.com/blog/distributed-transactions-tidb?utm_source=github&utm_medium=tidb)**: TiDB uses a two-phase commit protocol to ensure ACID compliance, providing strong consistency. Transactions span multiple nodes, and TiDB's distributed nature ensures data correctness even in the presence of network partitions or node failures.
+- **[Distributed Transactions](https://www.pingcap.com/blog/distributed-transactions-tidb?utm_source=github&utm_medium=tidb)**: TiDB는 2-phase commit(Transaction 을 구현하기 위한 방식) 프로토콜을 사용하여 ACID를 보장하고 강력한 일관성을 제공합니다. 트랜잭션은 여러 노드에 걸쳐 있으며(2-phase commit) TiDB의 분산된 특성은 네트워크 파티션이나 노드 장애가 있는 경우에도 데이터의 정확성을 보장합니다.
 
 - **[Horizontal and Vertical Scalability](https://docs.pingcap.com/tidb/stable/scale-tidb-using-tiup?utm_source=github&utm_medium=tidb)**: TiDB can be scaled horizontally by adding more nodes or vertically by increasing resources of existing nodes, all without downtime. TiDB's architecture separates computing from storage, enabling you to adjust both independently as needed for flexibility and growth.
+- **[Horizontal and Vertical Scalability](https://docs.pingcap.com/tidb/stable/scale-tidb-using-tiup?utm_source=github&utm_medium=tidb)**: TiDB는 가동 중지 시간(Downtime) 없이 더 많은 노드를 추가하여 수평으로 확장하거나(scale out) 기존 노드의 리소스를 늘려 수직으로 확장할(scale up) 수 있습니다. TiDB의 아키텍처는 컴퓨팅과 스토리지를 분리하므로 유연성과 성장을 위해 필요에 따라 두 가지를 독립적으로 조정할 수 있습니다.
 
 - **[High Availability](https://docs.pingcap.com/tidbcloud/high-availability-with-multi-az?utm_source=github&utm_medium=tidb)**: Built-in Raft consensus protocol ensures reliability and automated failover. Data is stored in multiple replicas, and transactions are committed only after writing to the majority of replicas, guaranteeing strong consistency and availability, even if some replicas fail. Geographic placement of replicas can be configured for different disaster tolerance levels.
+- **[High Availability](https://docs.pingcap.com/tidbcloud/high-availability-with-multi-az?utm_source=github&utm_medium=tidb)**: 내장된 Raft(합의 알고리즘)) 프로토콜은 안정성과 자동화된 장애 조치(failover)를 보장합니다. 데이터는 여러 복제본에 저장되며 대부분의 복제본에 쓴 후에만 트랜잭션이 커밋되므로 일부 복제본이 실패하더라도 강력한 일관성과 가용성이 보장됩니다. 다양한 재해 허용 수준에 맞게 복제본의 지리적 배치를 구성할 수 있습니다.
 
 - **[Hybrid Transactional/Analytical Processing (HTAP)](https://www.pingcap.com/blog/htap-demystified-defining-modern-data-architecture-tidb?utm_source=github&utm_medium=tidb)**: TiDB provides two storage engines: TiKV, a row-based storage engine, and TiFlash, a columnar storage engine. TiFlash uses the Multi-Raft Learner protocol to replicate data from TiKV in real time, ensuring consistent data between the TiKV row-based storage engine and the TiFlash columnar storage engine. The TiDB Server coordinates query execution across both TiKV and TiFlash to optimize performance.
+- **[Hybrid Transactional/Analytical Processing (HTAP)](https://www.pingcap.com/blog/htap-demystified-defining-modern-data-architecture-tidb?utm_source=github&utm_medium=tidb)** : TiDB는 행 기반(row-based) 스토리지 엔진인 TiKV와 열 기반(columnar) 스토리지 엔진인 TiFlash라는 두 가지 스토리지 엔진을 제공합니다. TiFlash는 Multi-Raft Learner 프로토콜을 사용하여 TiKV의 데이터를 실시간으로 복제하여 TiKV 행 기반 스토리지 엔진과 TiFlash 컬럼형 ​​스토리지 엔진 간의 일관된 데이터를 보장합니다. TiDB 서버는 TiKV와 TiFlash 모두에서 쿼리 실행을 조정하여 성능을 최적화합니다.
 
 - **[Cloud-Native](https://www.pingcap.com/cloud-native?utm_source=github&utm_medium=tidb)**: TiDB can be deployed in public clouds, on-premises, or natively in Kubernetes. [TiDB Operator](https://docs.pingcap.com/tidb-in-kubernetes/stable/tidb-operator-overview/?utm_source=github&utm_medium=tidb) helps manage TiDB on Kubernetes, automating cluster operations, while [TiDB Cloud](https://tidbcloud.com/?utm_source=github&utm_medium=tidb) provides a fully-managed service for easy and economical deployment, allowing users to set up clusters with just a few clicks.
+- **[Cloud-Native](https://www.pingcap.com/cloud-native?utm_source=github&utm_medium=tidb)**: TiDB는 퍼블릭 클라우드, 온프레미스 또는 기본적으로 Kubernetes(k8s)에 배포될 수 있습니다. [TiDB Operator](https://docs.pingcap.com/tidb-in-kubernetes/stable/tidb-operator-overview/?utm_source=github&utm_medium=tidb)는 Kubernetes에서 TiDB를 관리하는 데 도움이 됩니다. [TiDB Cloud](https://tidbcloud.com/?utm_source=github&utm_medium=tidb)는 클러스터 운영 자동화로, 쉽고 경제적인 배포를 위한 완전 관리형 서비스를 제공하므로 사용자는 단 몇 번의 클릭만으로 클러스터를 설정할 수 있습니다.
 
 - **[MySQL Compatibility](https://docs.pingcap.com/tidb/stable/mysql-compatibility?utm_source=github&utm_medium=tidb)**: TiDB is compatible with MySQL 8.0, allowing you to use familiar protocols, frameworks and tools. You can migrate applications to TiDB without changing any code, or with minimal modifications. Additionally, TiDB provides a suite of [data migration tools](https://docs.pingcap.com/tidb/stable/ecosystem-tool-user-guide?utm_source=github&utm_medium=tidb) to help easily migrate application data into TiDB.
+- **[MySQL Compatibility](https://docs.pingcap.com/tidb/stable/mysql-compatibility?utm_source=github&utm_medium=tidb)**: TiDB는 MySQL 8.0과 호환되므로 익숙한 프로토콜, frameworks 및 tool를 사용할 수 있습니다. 코드를 변경하지 않거나 최소한의 수정만으로 애플리케이션을 TiDB로 마이그레이션할 수 있습니다. 또한 TiDB는 애플리케이션 데이터를 TiDB로 쉽게 마이그레이션하는 데 도움이 되는 [데이터 마이그레이션 도구](https://docs.pingcap.com/tidb/stable/ecosystem-tool-user-guide?utm_source=github&utm_medium=tidb) 제품군을 제공합니다.
 
 - **[Open Source Commitment](https://www.pingcap.com/blog/open-source-is-in-our-dna-reaffirming-tidb-commitment?utm_source=github&utm_medium=tidb)**: Open source is at the core of TiDB's identity. All source code is available on GitHub under the Apache 2.0 license, including enterprise-grade features. TiDB is built with the belief that open source enables transparency, innovation, and collaboration. We actively encourage contributions from the community to help build a vibrant and inclusive ecosystem, reaffirming our commitment to open development and accessibility for everyone.
+- **[Open Source Commitment](https://www.pingcap.com/blog/open-source-is-in-our-dna-reaffirming-tidb-commitment?utm_source=github&utm_medium=tidb)**: 오픈소스는 TiDB 정체성의 핵심이다. 엔터프라이즈급 기능을 포함하여 모든 소스 코드는 Apache 2.0 라이선스에 따라 GitHub에서 사용할 수 있습니다. TiDB는 오픈 소스가 투명성, 혁신 및 협업을 가능하게 한다는 믿음을 바탕으로 구축되었습니다. 우리는 활기차고 포용적인 생태계를 구축하는 데 도움이 되도록 커뮤니티의 기여를 적극적으로 장려하며 모든 사람을 위한 개방형 개발 및 접근성에 대한 우리의 약속을 재확인합니다.
 
 ## Quick start
 
